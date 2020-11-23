@@ -60,7 +60,7 @@ async def _(event):
     start = datetime.now()
     OUTPUT_STR = "Reply to an image to do Protecc"
     if event.reply_to_msg_id:
-        catevent = await edit_or_reply(event)
+        catevent = await edit_or_reply(event, "")
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
         BASE_URL = "http://www.google.com"
