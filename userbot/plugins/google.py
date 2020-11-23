@@ -60,7 +60,6 @@ async def _(event):
     start = datetime.now()
     OUTPUT_STR = "Reply to an image to do Protecc"
     if event.reply_to_msg_id:
-        catevent = await edit_or_reply(event, ".")
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
         BASE_URL = "http://www.google.com"
@@ -88,7 +87,6 @@ async def _(event):
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
             google_rs_response = requests.get(request_url, allow_redirects=False)
             the_location = google_rs_response.headers.get("Location")
-        await catevent.edit("…")
         headers = {
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
         }
@@ -101,9 +99,6 @@ async def _(event):
         prs_text = prs_anchor_element.text
         # document.getElementById("jHnbRc")
         img_size_div = soup.find(id="jHnbRc")
-        img_size = img_size_div.find_all("div")
-        end = datetime.now()
-        ms = (end - start).seconds
         OUTPUT_STR = """/protecc {prs_text}""".format(
             **locals()
         )
