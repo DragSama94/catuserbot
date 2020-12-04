@@ -60,7 +60,7 @@ async def _(event):
     start = datetime.now()
     OUTPUT_STR = "Reply to an image to do Protecc"
     if event.reply_to_msg_id:
-        catevent = await edit_or_reply(event, " ")
+        catevent = await edit_or_reply(event, ".")
         previous_message = await event.get_reply_message()
         previous_message_text = previous_message.message
         BASE_URL = "http://www.google.com"
@@ -88,7 +88,7 @@ async def _(event):
             request_url = SEARCH_URL.format(BASE_URL, previous_message_text)
             google_rs_response = requests.get(request_url, allow_redirects=False)
             the_location = google_rs_response.headers.get("Location")
-        await catevent.edit(" ")
+        await catevent.edit("..")
         headers = {
             "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0"
         }
@@ -105,6 +105,7 @@ async def _(event):
             **locals()
         )
     await catevent.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
+
 
 @bot.on(admin_cmd(pattern="grs$"))
 @bot.on(sudo_cmd(pattern="grs$", allow_sudo=True))
