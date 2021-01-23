@@ -157,8 +157,8 @@ async def spammer(e):
         await edit_or_reply(e, "try again something went wrong or check `.info spam`")
 
 
-@bot.on(admin_cmd(pattern="bigspam (.*)"))
-@bot.on(sudo_cmd(pattern="bigspam (.*)", allow_sudo=True))
+@bot.on(admin_cmd(pattern="lol (!*)"))
+@bot.on(sudo_cmd(pattern="lol (!*)", allow_sudo=True))
 async def spammer(e):
     if e.fwd_from:
         return
